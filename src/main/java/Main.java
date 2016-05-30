@@ -124,19 +124,15 @@ public class Main extends Application {
             }
             if (users.get(i).getId() == allexpense.get(max_id).getUserid()) {
                 nameTake = users.get(i).toString();
-
             }
-
         }
         if (min * min < max * max) {
             result = max + min;
 
-            finalS += nameGive + " give money -->> " + (-min) + " to " +  " "  + nameTake + "\n";
-            System.out.println(nameGive + "give money " + min + "and" + max + " "  +  nameTake);
+            finalS += nameGive + " give money -->> " + (max) + " to " +  " "  + nameTake + "\n";
+            System.out.println(nameGive + "give money " + min + "and " + max + " "  +  nameTake);
             allexpense.get(max_id).setCost(result);
             allexpense.remove(min_id);
-
-
         }
         if (min * min > max * max)
         {
@@ -157,8 +153,6 @@ public class Main extends Application {
         if (allexpense.size() > 1) {
 
             findSmalltransact();
-
-
         }
     }
 

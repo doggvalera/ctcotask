@@ -28,7 +28,6 @@ public class Controller {
     private Label expenseAddLabel;
     @FXML
     private TextArea smalTransactArea;
-
     @FXML
     public void onButtonUserAddClicked() {
 
@@ -101,22 +100,12 @@ public class Controller {
 
     }
 
-
-
     public void onButtonFindMinExpAddClicked(){
-//
-//
        Main.makeExpenseList();
        Main.findSmalltransact();
       smalTransactArea.setText(Main.finalS);
-
         Main.finalS = "";
-//
-
-
     }
-
-
 
     public void onButtonRemoveUser(){
 

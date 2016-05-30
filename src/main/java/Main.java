@@ -9,7 +9,6 @@ public class Main extends Application {
 
     private static LinkedList<User> users = new LinkedList<User>();
     private static LinkedList<ExpenseList> allexpense = new LinkedList<ExpenseList>();
-    private int count = 999999;
     public static String finalS = new String();
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -64,8 +63,6 @@ public class Main extends Application {
                 summ += userContains(id).getExp().get(i).getPrice();
                 differentSumm = summ - findAverageExpense();
             }
-
-
             return differentSumm;
         }
         return 0;
@@ -142,13 +139,18 @@ public class Main extends Application {
             allexpense.get(min_id).setCost(result);
             allexpense.remove(max_id);
         }
-        if (min * min == max * max){
-            result = max + min;
-            finalS += nameGive + " give money -->> " + (max) +  " to " +  " " + nameTake + "\n";
-            System.out.println(nameGive + "give money " + min +  " and  " + max  + nameTake);
-            allexpense.remove(min_id);
-            allexpense.remove(max_id);
+        try {
+            if (min * min == max * max) {
+                result = max + min;
+                finalS += nameGive + " give money -->> " + (max) + " to " + " " + nameTake + "\n";
+                System.out.println(nameGive + "give money " + min + " and  " + max + nameTake);
+                allexpense.remove(min_id);
+                allexpense.remove(max_id);
+            }
+        }catch (Exception ignored){
+
         }
+
 
         if (allexpense.size() > 1) {
 

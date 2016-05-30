@@ -56,6 +56,7 @@
     <VBox GridPane.rowIndex="0" GridPane.columnIndex="6">
         <TextArea fx:id="itemDetailsTextArea"/>
         <TextArea fx:id="smalTransactArea"/>
+        <Label fx:id="averageLabel"></Label>
     </VBox>
 
 </GridPane>

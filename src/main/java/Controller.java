@@ -66,6 +66,7 @@ public class Controller {
             System.out.println(item.getExp().get(i).toString());
         }
         itemDetailsTextArea.setText(allex);
+        idUserField.setText(String.valueOf(item.getId()));
     }
 
     @FXML
@@ -96,7 +97,7 @@ public class Controller {
        Main.findSmalltransact();
       smalTransactArea.setText(Main.finalS);
         Main.finalS = "";
-        averageLabel.setText(String.valueOf(Main.findAverageExpense()));
+        averageLabel.setText(String.valueOf("Average expense: " + Main.findAverageExpense()));
 
     }
 

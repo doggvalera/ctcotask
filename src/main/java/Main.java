@@ -12,9 +12,6 @@ public class Main extends Application {
     public static String finalS = new String();
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-
-
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Expense finder");
         primaryStage.setScene(new Scene(root, 1000, 400));
@@ -75,7 +72,6 @@ public class Main extends Application {
                 if (users.get(i).getId() == id) {
                     useCont = users.get(i);
                     break;
-
                 }
             }
             return useCont;
@@ -101,7 +97,6 @@ public class Main extends Application {
         int max_id = 0;
         String nameGive = null;
         String nameTake = null;
-
         for (int i = 0; i < allexpense.size(); i++) {
             if (allexpense.get(i).getCost() < min) {
                 min = allexpense.get(i).getCost();
@@ -112,8 +107,6 @@ public class Main extends Application {
                 max_id = i;
             }
         }
-
-
 
         for (int i = 0; i < users.size(); i++) {
             if (users.get(i).getId() == allexpense.get(min_id).getUserid()) {
@@ -141,7 +134,6 @@ public class Main extends Application {
         }
         try {
             if (min * min == max * max) {
-                result = max + min;
                 finalS += nameGive + " give money -->> " + (max) + " to " + " " + nameTake + "\n";
                 System.out.println(nameGive + "give money " + min + " and  " + max + nameTake);
                 allexpense.remove(min_id);
@@ -151,9 +143,7 @@ public class Main extends Application {
 
         }
 
-
         if (allexpense.size() > 1) {
-
             findSmalltransact();
         }
     }

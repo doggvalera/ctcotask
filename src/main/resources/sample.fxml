@@ -36,7 +36,7 @@
         <Label fx:id="expenseAddLabel"></Label>
 
 
-        <Button text="Add Expence"
+        <Button text="Add Expense"
                 onAction="#onButtonExpenseAddClicked"/>
 
         <Button text="Find Minimum"

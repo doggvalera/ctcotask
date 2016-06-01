@@ -119,7 +119,13 @@ public class Main extends Application {
         if (min * min < max * max) {
             result = max + min;
 
-            finalS += nameGive + " give money -->> " + (max) + " to " +  " "  + nameTake + "\n";
+
+            if(min<0){
+            finalS += nameGive + " give money -->> " + (-min)   + " to " +  " "  + nameTake + "\n";
+            } else {              finalS += nameGive + " give money -->> " + (max)   + " to " +  " "  + nameTake + "\n";
+
+
+            }
             System.out.println(nameGive + "give money " + min + "and " + max + " "  +  nameTake);
             allexpense.get(max_id).setCost(result);
             allexpense.remove(min_id);

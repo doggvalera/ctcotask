@@ -32,6 +32,8 @@ public class Controller {
     @FXML
     private Label averageLabel;
     @FXML
+    private Label allExpense;
+    @FXML
     public void onButtonUserAddClicked() {
 
         if(!nameField.getText().trim().isEmpty() && !surnameField.getText().trim().isEmpty()) {
@@ -89,6 +91,7 @@ public class Controller {
             expenseAddLabel.setText("\t\n" + "You have empty field");
         }
         System.out.println(Main.getUsers().toString());
+        allExpense.setText(Main.findAllExpense().toString());
         initialize();
     }
 

@@ -3,6 +3,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Main extends Application {
@@ -28,13 +30,16 @@ public class Main extends Application {
 
     }
 
-    private static double findAllExpense() {
-        double allexpence = 0;
+    public static ArrayList<String> findAllExpense() {
+        ArrayList <String> allexpence = new ArrayList<String>();
+        double findMidleExp = 0;
 
         for (int i = 0; i < users.size(); i++) {
             for (int j = 0; j < users.get(i).getExp().size(); j++) {
-                allexpence += users.get(i).getExp().get(j).getPrice();
+                findMidleExp += users.get(i).getExp().get(j).getPrice();
             }
+            allexpence.add(users.get(i).toString()+ "  = " + String.valueOf(findMidleExp));
+            findMidleExp = 0;
         }
         return allexpence;
     }

@@ -1,8 +1,5 @@
 import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * Created by valerijszemlanikins on 30/05/16.
- */
 public class Expense {
     private String title;
     private Double price;

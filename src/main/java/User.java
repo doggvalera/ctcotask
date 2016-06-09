@@ -19,14 +19,14 @@ public class User {
         this.exp = new LinkedList<Expense>();
     }
 
-    public  void addExpence(String title, double price) {
+    public void addExpence(String title, double price) {
         this.exp.add(new Expense(title, price));
 
     }
 
     private Expense findExpence(int id) {
-        for(Expense checkExpense : this.exp) {
-            if(checkExpense.getId() == id) {
+        for (Expense checkExpense : this.exp) {
+            if (checkExpense.getId() == id) {
                 return checkExpense;
             }
         }
@@ -52,7 +52,7 @@ public class User {
 
     @Override
     public String toString() {
-        return this.name+ "  " + this.surname + " id: " + this.id;
+        return this.name + "  " + this.surname + " id: " + this.id;
     }
 
 }

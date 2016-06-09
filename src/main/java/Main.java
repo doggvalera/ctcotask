@@ -3,7 +3,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -11,7 +10,8 @@ public class Main extends Application {
 
     private static LinkedList<User> users = new LinkedList<User>();
     private static LinkedList<ExpenseList> allexpense = new LinkedList<ExpenseList>();
-    public static String finalS = new String();
+    public static String finalS = new String(); // Save all transacts between users;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -24,48 +24,43 @@ public class Main extends Application {
         launch(args);
     }
 
-    private static void addUser(String name, String surname) {
-        User user = new User(name, surname);
-        users.add(user);
-
-    }
-
     public static ArrayList<String> findAllExpense() {
-        ArrayList <String> allexpence = new ArrayList<String>();
-        double findMidleExp = 0;
-
+        // Find sum of the full amount of each person's expenses
+        ArrayList<String> allExpense = new ArrayList<String>();
+        double findMiddleExp = 0;
         for (int i = 0; i < users.size(); i++) {
             for (int j = 0; j < users.get(i).getExp().size(); j++) {
-                findMidleExp += users.get(i).getExp().get(j).getPrice();
+                findMiddleExp += users.get(i).getExp().get(j).getPrice();
             }
-            allexpence.add(users.get(i).toString()+ "  = " + String.valueOf(findMidleExp));
-            findMidleExp = 0;
+            allExpense.add(users.get(i).toString() + "  = " + String.valueOf(findMiddleExp));
+            findMiddleExp = 0;
         }
-        return allexpence;
+        return allExpense;
     }
 
     public static double findAverageExpense() {
-        double allexpence = 0;
-        double avarageExpence = 0;
-
+        // Find average expense
+        double allExpense = 0;
+        double averageExpense = 0;
         for (int i = 0; i < users.size(); i++) {
             for (int j = 0; j < users.get(i).getExp().size(); j++) {
-                allexpence += users.get(i).getExp().get(j).getPrice();
+                allExpense += users.get(i).getExp().get(j).getPrice();
             }
         }
-        avarageExpence = allexpence / users.size();
-        return avarageExpence;
+        averageExpense = allExpense / users.size();
+        return averageExpense;
     }
 
     private static double findDifferentExpense(int id) {
+        // Find all difference between user and average expense
         if (userContains(id) != null) {
-            double differentSumm = 0;
-            double summ = 0;
+            double differentSum = 0;
+            double sum = 0;
             for (int i = 0; i < userContains(id).getExp().size(); i++) {
-                summ += userContains(id).getExp().get(i).getPrice();
-                differentSumm = summ - findAverageExpense();
+                sum += userContains(id).getExp().get(i).getPrice();
+                differentSum = sum - findAverageExpense();
             }
-            return differentSumm;
+            return differentSum;
         }
         return 0;
     }
@@ -94,10 +89,11 @@ public class Main extends Application {
         }
     }
 
-    public static void findSmalltransact() {
-        double min = 99999999;
-        double max = 0;
-        double result = 0;
+    public static void findSmallTransact() {
+        // Find the greatest and the lowest difference between average value
+        double min = 99999999; //min difference
+        double max = 0; // max difference
+        double result = 0; // difference between greatest and lowest values
         int min_id = 0;
         int max_id = 0;
         String nameGive = null;
@@ -123,39 +119,31 @@ public class Main extends Application {
         }
         if (min * min < max * max) {
             result = max + min;
-
-
-            if(min<0){
-            finalS += nameGive + " give money -->> " + (-min)   + " to " +  " "  + nameTake + "\n";
-            } else {              finalS += nameGive + " give money -->> " + (max)   + " to " +  " "  + nameTake + "\n";
-
-
+            if (min < 0) {
+                finalS += nameGive + " give money -->> " + (-min) + " to " + " " + nameTake + "\n";
+            } else {
+                finalS += nameGive + " give money -->> " + (max) + " to " + " " + nameTake + "\n";
             }
-            System.out.println(nameGive + "give money " + min + "and " + max + " "  +  nameTake);
             allexpense.get(max_id).setCost(result);
             allexpense.remove(min_id);
         }
-        if (min * min > max * max)
-        {
+        if (min * min > max * max) {
             result = max + min;
-            finalS += nameGive + " give money -->> " + (max) +  " to " +  " " + nameTake + "\n";
-            System.out.println(nameGive + "give money " + min +  " and  " + max  + nameTake);
+            finalS += nameGive + " give money -->> " + (max) + " to " + " " + nameTake + "\n";
             allexpense.get(min_id).setCost(result);
             allexpense.remove(max_id);
         }
         try {
             if (min * min == max * max) {
                 finalS += nameGive + " give money -->> " + (max) + " to " + " " + nameTake + "\n";
-                System.out.println(nameGive + "give money " + min + " and  " + max + nameTake);
                 allexpense.remove(min_id);
                 allexpense.remove(max_id);
             }
-        }catch (Exception ignored){
+        } catch (Exception ignored) {
 
         }
-
         if (allexpense.size() > 1) {
-            findSmalltransact();
+            findSmallTransact();
         }
     }
 

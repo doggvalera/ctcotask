@@ -1,6 +1,4 @@
-/**
- * Created by valerijszemlanikins on 30/05/16.
- */
+
 public class ExpenseList {
     private int userid;
     private double cost;

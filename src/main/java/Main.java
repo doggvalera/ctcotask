@@ -66,6 +66,7 @@ public class Main extends Application {
     }
 
     public static User userContains(int id) {
+        // Does user exist with ID
         if (users != null) {
             User useCont = null;
             for (int i = 0; i < users.size(); i++) {

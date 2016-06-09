@@ -30,6 +30,7 @@ public class Controller {
     private Label averageLabel;
     @FXML
     private Label allExpense;
+
     @FXML
     public void onButtonUserAddClicked() {
         // Add user

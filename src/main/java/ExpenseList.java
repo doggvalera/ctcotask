@@ -26,7 +26,7 @@ public class ExpenseList {
 
     @Override
     public String toString() {
-        return "ExpenceList{" +
+        return "ExpenseList{" +
                 "userid=" + userid +
                 ", cost=" + cost +
                 '}';
